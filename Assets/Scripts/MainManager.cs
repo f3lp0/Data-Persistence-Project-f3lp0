@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour
 {
+    //private DataManager dataManager;
+
     public Brick BrickPrefab;
     public int LineCount = 6;
     public Rigidbody Ball;
@@ -72,7 +74,8 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         m_Points += point;
-        ScoreText.text = $"Score : {m_Points}";
+        ScoreText.text = $"Score of {DataManager.Instance.playerTextUGUI.text}: {m_Points}";
+        Debug.Log("Hola " + DataManager.Instance.playerTextUGUI.text);
     }
 
     public void GameOver()
@@ -81,9 +84,4 @@ public class MainManager : MonoBehaviour
         GameOverText.SetActive(true);
     }
 
-    [System.Serializable]
-    class SaveData
-    {
-        public Color TeamColor;
-    }
 }
