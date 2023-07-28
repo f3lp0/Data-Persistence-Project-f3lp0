@@ -18,7 +18,14 @@ public class MainManager : MonoBehaviour
     
     private bool m_GameOver = false;
 
-    
+    // Variables across the scenes:
+    public Text playerName;
+    public void NewPlayerName(Text playerName)
+    {
+        // add code here to handle when a color is selected
+        //DataManager.Instance.playerName = playerName;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,5 +79,11 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+    }
+
+    [System.Serializable]
+    class SaveData
+    {
+        public Color TeamColor;
     }
 }
