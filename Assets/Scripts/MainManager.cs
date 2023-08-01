@@ -28,7 +28,8 @@ public class MainManager : MonoBehaviour
     public Text bestScoreText;
     [SerializeField] string bestPlayer;
     [SerializeField] int bestScore;
-
+    public Text top10Text;
+    public GameObject top10Object;
 
     // Start is called before the first frame update
     void Start()
@@ -99,6 +100,9 @@ public class MainManager : MonoBehaviour
         if (belongsTop10 < 10)
         {
             // Code for congrats
+            int actualPlace = belongsTop10 + 1;
+            top10Text.text = "Congratulations! You are in the top 10 scores, your place is: " + actualPlace;
+            top10Object.SetActive(true);
         }
     }
 
