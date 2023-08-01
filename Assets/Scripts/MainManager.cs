@@ -21,16 +21,29 @@ public class MainManager : MonoBehaviour
     private bool m_GameOver = false;
 
     // Variables across the scenes:
-    public Text playerName;
-    public void NewPlayerName(Text playerName)
-    {
-        // add code here to handle when a color is selected
-        //DataManager.Instance.playerName = playerName;
-    }
+    [SerializeField] string playerName;
+
+    // Top 10 variables:
+    private int belongsTop10;
+    public Text bestScoreText;
+    [SerializeField] string bestPlayer;
+    [SerializeField] int bestScore;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        playerName = DataManager.Instance.playerName;
+        Debug.Log("Hola " + playerName);
+        Debug.Log("Hola " + DataManager.Instance.playerNameText.text);
+
+        ScoreText.text = $"Score of {playerName}: {m_Points}";
+
+        DataManager.Instance.LoadTop10();
+        bestPlayer = DataManager.Instance.players[0];
+        bestScore = DataManager.Instance.scores[0];
+        bestScoreText.text = "Best Score: " + bestPlayer + " score: " + bestScore;
+
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -74,14 +87,19 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         m_Points += point;
-        ScoreText.text = $"Score of {DataManager.Instance.playerTextUGUI.text}: {m_Points}";
-        Debug.Log("Hola " + DataManager.Instance.playerTextUGUI.text);
+        //ScoreText.text = $"Score of {DataManager.Instance.playerTextUGUI.text}: {m_Points}";
+        ScoreText.text = $"Score of {playerName}: {m_Points}";
     }
 
     public void GameOver()
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        belongsTop10 = DataManager.Instance.CheckPlayerScore(playerName, m_Points);
+        if (belongsTop10 < 10)
+        {
+            // Code for congrats
+        }
     }
 
 }

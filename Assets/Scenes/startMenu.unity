@@ -153,7 +153,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  playerTextUGUI: {fileID: 1434452371}
+  playerNameText: {fileID: 1434452371}
+  players:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  scores: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &136246661
 Transform:
   m_ObjectHideFlags: 0
@@ -492,6 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4104557acd0b6d42af1b4364c626c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNameText: {fileID: 1434452371}
 --- !u!1 &550329260
 GameObject:
   m_ObjectHideFlags: 0
